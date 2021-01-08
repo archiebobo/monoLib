@@ -15,7 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MonoLib.cpp">
+    <ClInclude Include="mono_Vector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MonoLib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mono_Vector.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
