@@ -6,7 +6,7 @@
 
 int main()
 {
-	struct MoVector2i vec=createMono2i(2,1);
+	struct MoVector2i vec=createVector2i(2,1);
 	printf("%d,%d", *(vec.x), *(vec.y));
 }
 
