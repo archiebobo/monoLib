@@ -18,6 +18,9 @@
     <ClInclude Include="mono_Vector.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="mono_Common.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MonoLib.c">

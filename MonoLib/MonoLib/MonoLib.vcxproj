@@ -143,6 +143,7 @@
     <ClCompile Include="mono_Vector.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="mono_Common.h" />
     <ClInclude Include="mono_Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
