@@ -6,8 +6,10 @@
 
 int main()
 {
-	struct MoVector2i vec=createVector2i(2,1);
-	printf("%d,%d", *(vec.x), *(vec.y));
+	struct MoVec3i vec;
+	createVector3i(&vec, 12, 13, 14);
+	mo_veci p_vec = exportVector3i(vec);
+	printf("%d, %d, %d", p_vec[0], p_vec[1], p_vec[2]);
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
