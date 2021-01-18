@@ -94,23 +94,28 @@ struct MoMat44d
 };
 
 
+//_______________________________________________________VECTOR-I___________________________________________________
 //Functions of Vector2i
 /* MoVector2i 构造函数
 * x: x坐标
 * y: y坐标
 */
-void createVector2i(struct MoVec2i* vec, int x, int y);
-
+inline void createVector2i(struct MoVec2i* vec, int x, int y)
+{
+	vec->x = vec->val;
+	vec->y = vec->val + 1;
+	*(vec->x) = x;
+	*(vec->y) = y;
+	return vec;
+}
 /*
 * 从veci 建立Vector2i
 */
 struct MoVec2i createVector2iFromVecPtr(mo_veci vecPtr);
-
 /*
 * 向量Vec2i加法
 */
 struct MoVec2i addVec2i(struct MoVec2i a, struct MoVec2i b);
-
 /*
 * 向量Vec2i减法
 */
@@ -131,14 +136,14 @@ double lenVec2i(struct MoVec2i vec);
 * 反转向量
 */
 void invertVec2i(struct MoVec2i* vec);
-
-
+//_______________________________________________________VECTOR-F___________________________________________________
 //Functions of Vector2f
 /* MoVector2f 构造函数
 * x: x坐标
 * y: y坐标
+* ----已实现-----
 */
-struct MoVec2f createVector2f(float x, float y);
+inline void  createVector2f(float x, float y);
 
 /*
 * 从veci 建立Vector2f
@@ -186,4 +191,61 @@ bool equalsVec2f(struct MoVec2f* a, struct MoVec2f* b, bool forceValue);
 void createVector3i(struct MoVec3i* vec, int x, int y, int z);
 
 mo_veci exportVector3i(struct MoVec3i vec);
+ // !_MONO_VECTOR_H_
+
+//_______________________________________________________VECTOR-D___________________________________________________
+//Functions of Vector2d
+/* MoVector2d 构造函数
+* x: x坐标
+* y: y坐标
+* ----已实现-----
+*/
+inline void  createVector2d(float x, float y);
+
+/*
+* 从veci 建立Vector2d
+*/
+struct MoVec2d createVector2dFromVecPtr(mo_vecf vecPtr);
+
+/*
+* 向量Vec2d加法
+*/
+struct MoVec2d addVec2d(struct MoVec2d a, struct MoVec2d b);
+
+/*
+* 向量Vec2f减法
+*/
+struct MoVec2d subsVec2d(struct MoVec2d a, struct MoVec2d b);
+/*
+* 向量Vec2i与标量乘法
+*/
+struct MoVec2d mulVec2d(struct MoVec2d vec, int mul);
+/*
+* 向量点乘积
+*/
+struct MoVec2d DotVec2d(struct MoVec2d a, struct MoVec2d b);
+/*
+* 向量长度
+*/
+double lenVec2d(struct MoVec2d vec);
+/*
+* 反转向量
+*/
+void invertVec2d(struct MoVec2d* vec);
+/*
+* 单位化Vec2f
+*/
+void unitizeVec2d(struct MoVec2d* vec);
+/*
+* 判断两个向量是否相等
+*/
+bool equalsVec2d(struct MoVec2d* a, struct MoVec2d* b, bool forceValue);
+
+//MoVector3i 构造函数
+//x: x坐标
+//y: y坐标
+//z: z坐标
+void createVector3d(struct MoVec3d* vec, int x, int y, int z);
+
+mo_vecd exportVector3i(struct MoVec3d vec);
 #endif // !_MONO_VECTOR_H_
