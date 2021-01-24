@@ -21,12 +21,24 @@
     <ClInclude Include="mono_Common.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="mono_Line.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mono_IO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mono_Geometry.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MonoLib.c">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="mono_Vector.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mono_Line.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

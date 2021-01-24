@@ -5,6 +5,8 @@
 
 #include "mono_Common.h"
 
+typedef int mo_dim;
+
 typedef int* mo_veci;
 typedef int** mo_vecArrayi;
 typedef float* mo_vecf;
@@ -106,7 +108,7 @@ inline void createVector2i(struct MoVec2i* vec, int x, int y)
 	vec->y = vec->val + 1;
 	*(vec->x) = x;
 	*(vec->y) = y;
-	return vec;
+
 }
 /*
 * 从veci 建立Vector2i
@@ -143,7 +145,7 @@ void invertVec2i(struct MoVec2i* vec);
 * y: y坐标
 * ----已实现-----
 */
-inline void  createVector2f(float x, float y);
+inline void  createVector2f(struct MoVec2f* vec, float x, float y);
 
 /*
 * 从veci 建立Vector2f
@@ -191,7 +193,7 @@ bool equalsVec2f(struct MoVec2f* a, struct MoVec2f* b, bool forceValue);
 void createVector3i(struct MoVec3i* vec, int x, int y, int z);
 
 mo_veci exportVector3i(struct MoVec3i vec);
- // !_MONO_VECTOR_H_
+// !_MONO_VECTOR_H_
 
 //_______________________________________________________VECTOR-D___________________________________________________
 //Functions of Vector2d
@@ -200,7 +202,7 @@ mo_veci exportVector3i(struct MoVec3i vec);
 * y: y坐标
 * ----已实现-----
 */
-inline void  createVector2d(float x, float y);
+void  createVector2d(struct MoVec2d* vec, double x, double y);
 
 /*
 * 从veci 建立Vector2d
@@ -247,5 +249,4 @@ bool equalsVec2d(struct MoVec2d* a, struct MoVec2d* b, bool forceValue);
 //z: z坐标
 void createVector3d(struct MoVec3d* vec, int x, int y, int z);
 
-mo_vecd exportVector3i(struct MoVec3d vec);
 #endif // !_MONO_VECTOR_H_

@@ -6,9 +6,6 @@
  *2，赋值 movec2i 一个数组，两个指针
  *3，
 */
-struct MoVec2i createVector2iFromVecPtr(mo_veci vecPtr)
-{
-}
 
 struct MoVec2i addVec2i(struct MoVec2i a, struct MoVec2i b)
 {	
@@ -29,8 +26,6 @@ struct MoVec2i subsVec2i(struct MoVec2i a, struct MoVec2i b)
 	a.y = &(a.val[1]);
 	return a;
 }
-
-
 
 bool equalsVec2f(struct MoVec2f* a, struct MoVec2f* b, bool forceValue)
 {
@@ -56,7 +51,6 @@ void createVector3i(struct MoVec3i* vec, int x, int y, int z)
 	*(vec->x) = x;
 	*(vec->y) = y;
 	*(vec->z) = z;
-	return vec;
 }
 
 mo_veci exportVector3i(struct MoVec3i vec)
@@ -72,20 +66,18 @@ mo_veci exportVector3i(struct MoVec3i vec)
 	return p_vec;
 }
 
-inline void createVector2d(struct MoVec2d* vec, double x, double y)
+void createVector2d(struct MoVec2d* vec, double x, double y)
 {
 	vec->x = vec->val;
 	vec->y = vec->val + 1;
 	*(vec->x) = x;
 	*(vec->y) = y;
-	return vec;
 }
 
-inline void createVector2f(struct MoVec2f* vec, float x, float y)
+void createVector2f(struct MoVec2f* vec, float x, float y)
 {
 	vec->x = vec->val;
 	vec->y = vec->val + 1;
 	*(vec->x) = x;
 	*(vec->y) = y;
-	return vec;
 }

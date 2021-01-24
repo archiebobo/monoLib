@@ -3,20 +3,56 @@
 
 #include "mono_Vector.h"
 #include "stdio.h"
+#include "mono_IO.h"
+#include "stdlib.h"
 
 int main()
 {
-	struct MoVec2i a, b;
-	createVector2i(&a, 1, 2);
-	createVector2i(&b, 2, 4);
-	struct MoVec2i addVec2i(a,b);
-	printf("%d,%d", a.val[0], a.val[1]);
+	int* vec1 = (int*)malloc(sizeof(int) * 3);
+	mo_vecf vec2 = (mo_vecf)malloc(sizeof(float) * 3);
+	mo_vecd vec3 = (mo_vecd)malloc(sizeof(double) * 3);
 
-		struct MoVec3i vec;
-	createVector3i(&vec, 12, 13, 154);
-	mo_veci p_vec = exportVector3i(vec);
-	printf("%d, %d, %d", p_vec[0], p_vec[1], p_vec[2]);
+	if (vec1 != 0)
+	{
+		vec1[0] = 1;
+		vec1[1] = 2;
+		vec1[2] = 3;
+	}
+	if (vec2 != 0)
+	{
+		vec2[0] = 1;
+		vec2[1] = 2;
+		vec2[2] = 3;
+	}
+	if (vec3 != 0)
+	{
+		vec3[0] = 1;
+		vec3[1] = 2;
+		vec3[2] = 3;
+	}
 
+	FILE* f;
+	fopen_s(&f, "C:\\Users\\pro_e\\Desktop\\newFile", "wb");
+	WriteVectorI(f, vec1, 3);
+	if (f != 0)
+		fclose(f);
+
+	mo_veci tvec = (mo_veci)malloc(sizeof(float) * 3);
+	fopen_s(&f, "C:\\Users\\pro_e\\Desktop\\newFile", "r");
+	mono_type ttype;
+	if (f != 0)
+	{
+		if (fread(&ttype, 2, 1, f))
+		{
+			if (ttype == m_veci_name)
+			{
+				ReadVectorI(f, tvec, 3);
+			}
+		}
+		fclose(f);
+	}
+	if (tvec != 0)
+		printf("%d，%d，%d", tvec[0], tvec[1], tvec[2]);
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
