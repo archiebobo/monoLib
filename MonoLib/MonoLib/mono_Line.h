@@ -5,6 +5,7 @@
 
 #include "mono_Vector.h"
 #include "stdlib.h"
+#include "math.h"
 
 typedef mo_veci* mo_linei;
 typedef mo_vecf* mo_linef;
@@ -22,6 +23,11 @@ void mo_DisposeLineF(mo_linef* line, bool deepDispose);
 
 void mo_DisposeLineD(mo_lined* line, bool deepDispose);
 
+float getLineILength(mo_linei line, mo_dim dim);
+
+float getLineFLength(mo_linef line, mo_dim dim);
+
+double getLineDLength(mo_lined line, mo_dim dim);
 
 
 #endif // !_MONO_LINE_H_

@@ -5,54 +5,33 @@
 #include "stdio.h"
 #include "mono_IO.h"
 #include "stdlib.h"
+#include "stdarg.h"
+#include "mono_Line.h"
+
+mo_veci mo_create_veci(mo_dim dim, ...)
+{
+	mo_veci vec = (mo_veci)malloc(sizeof(int) * 3);
+	if (vec == 0)
+	{
+		return 0;
+	}
+	va_list list;
+	va_start(list, dim);
+	for (int i = 0; i < dim; i++)
+	{
+		vec[i] = va_arg(list, int);
+	}
+	va_end(list);
+	return vec;
+}
 
 int main()
 {
-	int* vec1 = (int*)malloc(sizeof(int) * 3);
-	mo_vecf vec2 = (mo_vecf)malloc(sizeof(float) * 3);
-	mo_vecd vec3 = (mo_vecd)malloc(sizeof(double) * 3);
-
-	if (vec1 != 0)
-	{
-		vec1[0] = 1;
-		vec1[1] = 2;
-		vec1[2] = 3;
-	}
-	if (vec2 != 0)
-	{
-		vec2[0] = 1;
-		vec2[1] = 2;
-		vec2[2] = 3;
-	}
-	if (vec3 != 0)
-	{
-		vec3[0] = 1;
-		vec3[1] = 2;
-		vec3[2] = 3;
-	}
-
-	FILE* f;
-	fopen_s(&f, "C:\\Users\\pro_e\\Desktop\\newFile", "wb");
-	WriteVectorI(f, vec1, 3);
-	if (f != 0)
-		fclose(f);
-
-	mo_veci tvec = (mo_veci)malloc(sizeof(float) * 3);
-	fopen_s(&f, "C:\\Users\\pro_e\\Desktop\\newFile", "r");
-	mono_type ttype;
-	if (f != 0)
-	{
-		if (fread(&ttype, 2, 1, f))
-		{
-			if (ttype == m_veci_name)
-			{
-				ReadVectorI(f, tvec, 3);
-			}
-		}
-		fclose(f);
-	}
-	if (tvec != 0)
-		printf("%d，%d，%d", tvec[0], tvec[1], tvec[2]);
+	mo_veci vec1 = mo_create_veci(3, 6, 8, 0);
+	mo_veci vec2 = mo_create_veci(3, 0, 0, 0);
+	mo_linei line1;
+	mo_CreateLineI(&line1, vec1, vec2);
+	printf("%f", getLineILength(line1, 2));
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

@@ -108,7 +108,6 @@ inline void createVector2i(struct MoVec2i* vec, int x, int y)
 	vec->y = vec->val + 1;
 	*(vec->x) = x;
 	*(vec->y) = y;
-
 }
 /*
 * ´Óveci ½¨Á¢Vector2i
