@@ -80,9 +80,9 @@ float getLineILength(mo_linei line, mo_dim dim)
 	int sum = 0;
 	for (int i = 0; i < dim; i++)
 	{
-		sum += pow(line[0][i] - line[1][i], 2);
+		sum += (int)powf((float)(line[0][i] - line[1][i]), 2);
 	}
-	return sqrtf(sum);
+	return sqrtf((float)sum);
 }
 
 float getLineFLength(mo_linef line, mo_dim dim)

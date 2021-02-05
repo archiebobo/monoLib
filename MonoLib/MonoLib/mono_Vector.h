@@ -8,35 +8,41 @@
 typedef int mo_dim;
 
 typedef int* mo_veci;
-typedef int** mo_vecArrayi;
-typedef float* mo_vecf;
-typedef float** mo_vecArrayf;
 typedef double* mo_vecd;
-typedef double** mo_vecArrayd;
-typedef float** mo_matf;
-typedef double** mo_matd;
 
 struct MoVec2i
 {
-	int val[2];
-	int* x;
-	int* y;
+	int* Vec;
+	int* X;
+	int* Y;
+	void(*Read);
+	void(*Write);
 };
-
+struct MoVec2d
+{
+	double* vec;
+	double* x;
+	double* y;
+	void(*Read);
+	void(*Write);
+};
+struct MoVec3d
+{
+	double val[3];
+	double* x;
+	double* y;
+	double* z;
+	void(*Read);
+	void(*Write);
+};
+#pragma region  不着急
+typedef float* mo_vecf;
 struct MoVec2f
 {
-	float val[2];
+	float* val;
 	float* x;
 	float* y;
 };
-
-struct MoVec2d
-{
-	double val[2];
-	double* x;
-	double* y;
-};
-
 struct MoVec3i
 {
 	int val[3];
@@ -44,7 +50,6 @@ struct MoVec3i
 	int* y;
 	int* z;
 };
-
 struct MoVec3f
 {
 	float val[3];
@@ -52,200 +57,36 @@ struct MoVec3f
 	float* y;
 	float* z;
 };
+#pragma endregion
 
-struct MoVec3d
-{
-	double val[3];
-	double* x;
-	double* y;
-	double* z;
-};
+mo_veci CreateVectorI(mo_dim dim, int* vals);
+mo_vecd CreateVectorD(mo_dim dim, double* vals);
 
-struct MoMat33f
-{
-	float val[3][3];
-	float** r1;
-	float** r2;
-	float** r3;
-};
+mo_veci  VectorIAdd(mo_dim dim, mo_veci a, mo_veci b);
+mo_vecd  VectorDAdd(mo_dim dim, mo_vecd a, mo_vecd b);
 
-struct MoMat33d
-{
-	double val[3][3];
-	double** r1;
-	double** r2;
-	double** r3;
-};
+mo_veci  VectorISub(mo_dim dim, int a, mo_veci b);
+mo_vecd  VectorDSub(mo_dim dim, double a, mo_vecd b);
 
-struct MoMat44f
-{
-	float val[4][4];
-	float** r1;
-	float** r2;
-	float** r3;
-	float** r4;
-};
+mo_veci  VectorIMultiple(mo_dim dim, mo_veci a, mo_veci b);
+mo_vecd  VectorDMultiple(mo_dim dim, mo_vecd a, mo_vecd b);
 
-struct MoMat44d
-{
-	double val[4][4];
-	double** r1;
-	double** r2;
-	double** r3;
-	double** r4;
-};
+mo_veci  VectorIDot(mo_dim dim, mo_veci a, mo_veci b);
+mo_vecd  VectorDDot(mo_dim dim, mo_vecd a, mo_vecd b);
+
+mo_veci  VectorICross(mo_dim dim, mo_veci a, mo_veci b);
+mo_vecd  VectorDCross(mo_dim dim, mo_vecd a, mo_vecd b);
 
 
-//_______________________________________________________VECTOR-I___________________________________________________
-//Functions of Vector2i
-/* MoVector2i 构造函数
-* x: x坐标
-* y: y坐标
-*/
-inline void createVector2i(struct MoVec2i* vec, int x, int y)
-{
-	vec->x = vec->val;
-	vec->y = vec->val + 1;
-	*(vec->x) = x;
-	*(vec->y) = y;
-}
-/*
-* 从veci 建立Vector2i
-*/
-struct MoVec2i createVector2iFromVecPtr(mo_veci vecPtr);
-/*
-* 向量Vec2i加法
-*/
-struct MoVec2i addVec2i(struct MoVec2i a, struct MoVec2i b);
-/*
-* 向量Vec2i减法
-*/
-struct MoVec2i subsVec2i(struct MoVec2i a, struct MoVec2i b);
-/*
-* 向量Vec2i与标量乘法
-*/
-struct MoVec2i mulVec2i(struct MoVec2i vec, int mul);
-/*
-* 向量点乘积
-*/
-struct MoVec2i DotVec2i(struct MoVec2i a, struct MoVec2i b);
-/*
-* 向量长度
-*/
-double lenVec2i(struct MoVec2i vec);
-/*
-* 反转向量
-*/
-void invertVec2i(struct MoVec2i* vec);
-//_______________________________________________________VECTOR-F___________________________________________________
-//Functions of Vector2f
-/* MoVector2f 构造函数
-* x: x坐标
-* y: y坐标
-* ----已实现-----
-*/
-inline void  createVector2f(struct MoVec2f* vec, float x, float y);
 
-/*
-* 从veci 建立Vector2f
-*/
-struct MoVec2f createVector2fFromVecPtr(mo_vecf vecPtr);
+void ReverseVectorI(mo_dim dim, mo_veci vec);
+void ReverseVectorD(mo_dim dim, mo_vecd vec);
 
-/*
-* 向量Vec2f加法
-*/
-struct MoVec2f addVec2f(struct MoVec2f a, struct MoVec2f b);
+double VectorILength(mo_dim dim, mo_veci vec);
+double VectorDLength(mo_dim dim, mo_vecd vec);
 
-/*
-* 向量Vec2f减法
-*/
-struct MoVec2f subsVec2f(struct MoVec2f a, struct MoVec2f b);
-/*
-* 向量Vec2i与标量乘法
-*/
-struct MoVec2f mulVec2f(struct MoVec2f vec, int mul);
-/*
-* 向量点乘积
-*/
-struct MoVec2f DotVec2f(struct MoVec2f a, struct MoVec2f b);
-/*
-* 向量长度
-*/
-double lenVec2f(struct MoVec2f vec);
-/*
-* 反转向量
-*/
-void invertVec2f(struct MoVec2f* vec);
-/*
-* 单位化Vec2f
-*/
-void unitizeVec2f(struct MoVec2f* vec);
-/*
-* 判断两个向量是否相等
-*/
-bool equalsVec2f(struct MoVec2f* a, struct MoVec2f* b, bool forceValue);
+void UnitizeVectorI(mo_dim dim, mo_veci vec);
+void UnitizeVectorD(mo_dim dim, mo_vecd vec);
 
-//MoVector3i 构造函数
-//x: x坐标
-//y: y坐标
-//z: z坐标
-void createVector3i(struct MoVec3i* vec, int x, int y, int z);
-
-mo_veci exportVector3i(struct MoVec3i vec);
-// !_MONO_VECTOR_H_
-
-//_______________________________________________________VECTOR-D___________________________________________________
-//Functions of Vector2d
-/* MoVector2d 构造函数
-* x: x坐标
-* y: y坐标
-* ----已实现-----
-*/
-void  createVector2d(struct MoVec2d* vec, double x, double y);
-
-/*
-* 从veci 建立Vector2d
-*/
-struct MoVec2d createVector2dFromVecPtr(mo_vecf vecPtr);
-
-/*
-* 向量Vec2d加法
-*/
-struct MoVec2d addVec2d(struct MoVec2d a, struct MoVec2d b);
-
-/*
-* 向量Vec2f减法
-*/
-struct MoVec2d subsVec2d(struct MoVec2d a, struct MoVec2d b);
-/*
-* 向量Vec2i与标量乘法
-*/
-struct MoVec2d mulVec2d(struct MoVec2d vec, int mul);
-/*
-* 向量点乘积
-*/
-struct MoVec2d DotVec2d(struct MoVec2d a, struct MoVec2d b);
-/*
-* 向量长度
-*/
-double lenVec2d(struct MoVec2d vec);
-/*
-* 反转向量
-*/
-void invertVec2d(struct MoVec2d* vec);
-/*
-* 单位化Vec2f
-*/
-void unitizeVec2d(struct MoVec2d* vec);
-/*
-* 判断两个向量是否相等
-*/
-bool equalsVec2d(struct MoVec2d* a, struct MoVec2d* b, bool forceValue);
-
-//MoVector3i 构造函数
-//x: x坐标
-//y: y坐标
-//z: z坐标
-void createVector3d(struct MoVec3d* vec, int x, int y, int z);
 
 #endif // !_MONO_VECTOR_H_
