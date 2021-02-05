@@ -143,7 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MonoLib.c" />
-    <ClCompile Include="mono_Line.cpp" />
+    <ClCompile Include="mono_Line.c" />
     <ClCompile Include="mono_Vector.c" />
   </ItemGroup>
   <ItemGroup>

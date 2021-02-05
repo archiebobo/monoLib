@@ -38,7 +38,7 @@
     <ClCompile Include="mono_Vector.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="mono_Line.cpp">
+    <ClCompile Include="mono_Line.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
