@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MONO_IO_H_
-#define _MONO_IO_H_
+#ifndef _MONO_GEOMETRY_IO_H_
+#define _MONO_GEOMETRY_IO_H_
 
 #include "stdio.h"
 #include "mono_Vector.h"
@@ -38,4 +38,4 @@ void ReadVectorD(FILE* file, mo_vecd vector, mo_dim dim)
 {
 	fread(vector, sizeof(double), 3, file);
 }
-#endif // !_MONO_IO_H_
+#endif // !_MONO_GEOMETRY_IO_H_
